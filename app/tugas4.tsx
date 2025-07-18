@@ -5,10 +5,8 @@ import {
   StyleSheet,
   SafeAreaView,
   FlatList,
-  ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
-import { useFonts } from 'expo-font';
 
 // --- BAGIAN 1: DATA & LOGIKA ---
 
@@ -18,27 +16,24 @@ interface Student {
   stambuk: string;
 }
 
-// Data Mahasiswa dari teman Anda
 const realStudentData = [
-  { fullName: 'Majeri', stambuk: '105841103622' },
-  { fullName: 'Hamdani', stambuk: '105841103722' },
-  { fullName: 'ALI SULTON S PALILATI', stambuk: '105841102222' },
-  { fullName: 'ABSARMARSAL RIZAL MAHUA', stambuk: '105841101522' },
-  { fullName: 'Syawaluddin', stambuk: '105841101622' },
-  { fullName: 'NUR MILAIN HIDAYAH', stambuk: '105841100822' },
-  { fullName: 'Siti Marwa', stambuk: '105841100122' },
-  { fullName: 'Muliana', stambuk: '105841103822' },
-  { fullName: 'NABILA ISMAIL MATTA', stambuk: '105841100722' },
-  { fullName: 'Andi Citra Ayu Lestari', stambuk: '105841101722' },
+    { fullName: 'Majeri', stambuk: '105841103622' },
+    { fullName: 'Hamdani', stambuk: '105841103722' },
+    { fullName: 'ALI SULTON S PALILATI', stambuk: '105841102222' },
+    { fullName: 'ABSARMARSAL RIZAL MAHUA', stambuk: '105841101522' },
+    { fullName: 'Syawaluddin', stambuk: '105841101622' },
+    { fullName: 'NUR MILAIN HIDAYAH', stambuk: '105841100822' },
+    { fullName: 'Siti Marwa', stambuk: '105841100122' },
+    { fullName: 'Muliana', stambuk: '105841103822' },
+    { fullName: 'NABILA ISMAIL MATTA', stambuk: '105841100722' },
+    { fullName: 'Andi Citra Ayu Lestari', stambuk: '105841101722' },
 ];
 
-// Data Mahasiswa Lengkap (10 nama pertama adalah teman Anda)
 const studentList: Student[] = Array.from({ length: 130 }, (_, i) => {
   const id = i + 1;
   if (i < realStudentData.length) {
     return { id, ...realStudentData[i] };
   }
-  // Sisa daftar diisi data dummy
   return {
     id,
     fullName: `Mahasiswa Angkatan '22 No. ${id}`,
@@ -46,18 +41,15 @@ const studentList: Student[] = Array.from({ length: 130 }, (_, i) => {
   };
 });
 
-// Logika untuk memilih nama dengan aturan "wrapping"
 const getNeighboringNames = (targetStambuk: number): Student[] => {
   const result: Student[] = [];
   const totalStudents = studentList.length;
   const targetIndex = targetStambuk - 1;
 
-  // 5 nama sebelumnya
   for (let i = 5; i > 0; i--) {
     const prevIndex = (targetIndex - i + totalStudents) % totalStudents;
     result.push(studentList[prevIndex]);
   }
-  // 5 nama setelahnya
   for (let i = 1; i <= 5; i++) {
     const nextIndex = (targetIndex + i) % totalStudents;
     result.push(studentList[nextIndex]);
@@ -67,22 +59,15 @@ const getNeighboringNames = (targetStambuk: number): Student[] => {
 
 
 // --- BAGIAN 2: PETA FONT ---
-// ⚠️ PENTING: Sesuaikan nama file di sini agar sama persis dengan file di folder assets Anda!
-const fontsToLoad = {
-  // Font Statis
-  'Roboto-Regular': require('../assets/fonts/static/Roboto-Regular.ttf'),
-  'Lato-Bold': require('../assets/fonts/static/Lato-Bold.ttf'),
-  'Oswald-Regular': require('../assets/fonts/static/Oswald-Regular.ttf'),
-  'Raleway-Bold': require('../assets/fonts/static/Raleway-Bold.ttf'),
-  'Montserrat-Regular': require('../assets/fonts/static/Montserrat-Regular.ttf'),
-  // Font Variabel
-  'Inter-Variable': require('../assets/fonts/variable/Inter-VariableFont_opsz,wght.ttf'),
-  'WorkSans-Variable': require('../assets/fonts/variable/WorkSans-VariableFont_wght.ttf'),
-  'Manrope-Variable': require('../assets/fonts/variable/Manrope-VariableFont_wght.ttf'),
-  'SourceSans3-Variable': require('../assets/fonts/variable/SourceSans3-VariableFont_wght.ttf'),
-  'Outfit-Variable': require('../assets/fonts/variable/Outfit-VariableFont_wght.ttf'),
-};
-const allFontFamilies = Object.keys(fontsToLoad);
+
+// Hanya butuh daftar nama font-nya saja.
+// Pastikan urutan dan nama di sini sama persis dengan yang ada di _layout.tsx
+const allFontFamilies = [
+  // Statis
+  'Roboto-Regular', 'Lato-Bold', 'Oswald-Regular', 'Raleway-Bold', 'Montserrat-Regular',
+  // Variabel
+  'Inter-Variable', 'WorkSans-Variable', 'Manrope-Variable', 'SourceSans3-Variable', 'Outfit-Variable',
+];
 
 
 // --- BAGIAN 3: KOMPONEN KARTU NAMA ---
@@ -113,14 +98,8 @@ const NameCard: FC<NameCardProps> = memo(({ name, stambuk, index }) => {
 // --- BAGIAN 4: LAYAR UTAMA APLIKASI ---
 
 export default function FontAssignmentScreen() {
-  const [fontsLoaded] = useFonts(fontsToLoad);
   const [stambuk, setStambuk] = useState(10);
-
   const displayedNames = useMemo(() => getNeighboringNames(stambuk), [stambuk]);
-
-  if (!fontsLoaded) {
-    return <ActivityIndicator size="large" style={styles.container} />;
-  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -139,7 +118,6 @@ export default function FontAssignmentScreen() {
         />
       </View>
 
-      {/* Kontrol untuk mengubah stambuk menggunakan tombol +/- */}
       <View style={styles.controlContainer}>
         <Text style={styles.controlLabel}>Ubah Urutan Stambuk</Text>
         <View style={styles.buttonRow}>
