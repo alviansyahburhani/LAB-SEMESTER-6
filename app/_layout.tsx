@@ -12,17 +12,17 @@ SplashScreen.preventAutoHideAsync();
 // Pastikan path filenya benar sesuai struktur folder proyek Anda.
 const fontsToLoad = {
   // 5 Font Statis
-  'Roboto-Regular': require('../assets/fonts/static/Roboto-Regular.ttf'),
-  'Lato-Bold': require('../assets/fonts/static/Lato-Bold.ttf'),
-  'Oswald-Regular': require('../assets/fonts/static/Oswald-Regular.ttf'),
-  'Raleway-Bold': require('../assets/fonts/static/Raleway-Bold.ttf'),
-  'Montserrat-Regular': require('../assets/fonts/static/Montserrat-Regular.ttf'),
+  'PlayfairDisplay-Bold': require('../assets/fonts/static/PlayfairDisplay-Bold.ttf'),
+  'Nunito-Regular': require('../assets/fonts/static/Nunito-Regular.ttf'),
+  'JetBrainsMono-Regular': require('../assets/fonts/static/JetBrainsMono-Regular.ttf'),
+  'Lobster-Regular': require('../assets/fonts/static/Lobster-Regular.ttf'),
+  'Comfortaa-Bold': require('../assets/fonts/static/Comfortaa-Bold.ttf'),
   // 5 Font Variabel
-  'Inter-Variable': require('../assets/fonts/variable/Inter-VariableFont_opsz,wght.ttf'),
-  'WorkSans-Variable': require('../assets/fonts/variable/WorkSans-VariableFont_wght.ttf'),
-  'Manrope-Variable': require('../assets/fonts/variable/Manrope-VariableFont_wght.ttf'),
-  'SourceSans3-Variable': require('../assets/fonts/variable/SourceSans3-VariableFont_wght.ttf'),
-  'Outfit-Variable': require('../assets/fonts/variable/Outfit-VariableFont_wght.ttf'),
+  'PlusJakartaSans-Variable': require('../assets/fonts/variable/PlusJakartaSans-VariableFont_wght.ttf'),
+  'Figtree-Variable': require('../assets/fonts/variable/Figtree-VariableFont_wght.ttf'),
+  'Lexend-Variable': require('../assets/fonts/variable/Lexend-VariableFont_wght.ttf'),
+  'Urbanist-Variable': require('../assets/fonts/variable/Urbanist-VariableFont_wght.ttf'),
+  'DMSans-Variable': require('../assets/fonts/variable/DMSans-VariableFont_opsz,wght.ttf'),
 };
 
 export default function RootLayout() {

@@ -146,29 +146,62 @@ export default function FontAssignmentScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
+    backgroundColor: '#1A1A2D', // Latar belakang utama
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 60, // Beri sedikit ruang lebih di atas
   },
   header: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: 'white',
-    marginBottom: 20,
+    color: '#F92672', // Warna pink neon
+    marginBottom: 25,
     textAlign: 'center',
+    textShadowColor: 'rgba(249, 38, 114, 0.4)', // Efek bayangan untuk "glow"
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 8,
+  },
+  card: {
+    backgroundColor: '#2A2A4D', // Latar belakang kartu
+    borderRadius: 12, // Sudut lebih bulat
+    padding: 20,
+    marginHorizontal: 20,
+    marginVertical: 8,
+    borderWidth: 1,
+    borderColor: '#4E4E6A', // Garis tepi halus
+    shadowColor: '#000', // Efek bayangan kartu
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8,
+  },
+  cardText: {
+    color: '#E0E0E0', // Warna teks utama
+    fontSize: 18,
+  },
+  stambukText: {
+    color: '#8F8F9E', // Warna teks sekunder
+    fontSize: 14,
+    marginTop: 5,
+  },
+  fontInfo: {
+    color: '#A6E22E', // Warna hijau neon
+    fontSize: 12,
+    marginTop: 10,
+    fontFamily: 'monospace', // Beri kesan teknis
   },
   controlContainer: {
     width: '100%',
-    paddingVertical: 15,
+    paddingVertical: 20,
     alignItems: 'center',
-    backgroundColor: '#1c1c1e',
+    backgroundColor: '#1A1A2D',
     borderTopWidth: 1,
-    borderTopColor: '#3A3A3C',
+    borderTopColor: '#4E4E6A',
   },
   controlLabel: {
-    color: 'white',
+    color: '#E0E0E0',
     marginBottom: 15,
     fontSize: 16,
+    fontWeight: '600',
   },
   buttonRow: {
     flexDirection: 'row',
@@ -176,45 +209,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    backgroundColor: '#0A84FF',
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    backgroundColor: '#F92672', // Warna pink neon
+    width: 55,
+    height: 55,
+    borderRadius: 27.5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 20,
+    marginHorizontal: 25,
+    shadowColor: '#F92672', // Efek glow pada tombol
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.8,
+    shadowRadius: 10,
+    elevation: 10,
   },
   buttonText: {
     color: 'white',
-    fontSize: 28,
+    fontSize: 30,
     fontWeight: 'bold',
   },
   stambukDisplay: {
     color: 'white',
-    fontSize: 22,
-    fontWeight: '600',
+    fontSize: 24,
+    fontWeight: '700',
     width: 60,
     textAlign: 'center',
-  },
-  card: {
-    backgroundColor: '#2c2c2e',
-    borderRadius: 8,
-    padding: 15,
-    marginHorizontal: 20,
-    marginVertical: 6,
-  },
-  cardText: {
-    color: 'white',
-    fontSize: 18,
-  },
-  stambukText: {
-    color: '#b0b0b0',
-    fontSize: 14,
-    marginTop: 4,
-  },
-  fontInfo: {
-    color: '#8e8e93',
-    fontSize: 10,
-    marginTop: 8,
   },
 });
