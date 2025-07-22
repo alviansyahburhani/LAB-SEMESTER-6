@@ -21,6 +21,10 @@ export default function MainMenuScreen() {
         <Text style={styles.linkText}>Buka Tugas 3: Display Font Dinamis</Text>
       </Link>
 
+      <Link href="/tugas6" style={styles.link}>
+        <Text style={styles.linkText}>Buka Tugas 5: menampilkan icon berbeda</Text>
+      </Link>
+
     </View>
   );
 }
