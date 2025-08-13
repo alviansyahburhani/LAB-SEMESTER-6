@@ -3,60 +3,74 @@ import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { View, Text } from 'react-native';
 
-// Skema warna profesional yang terinspirasi dari Unismuh
 const COLORS = {
-  primary: '#0D47A1', // Biru tua khas Unismuh
-  secondary: '#FFC107', // Aksen kuning
-  inactive: '#8E8E93', // Abu-abu standar iOS untuk teks tidak aktif
+  primary: '#0D47A1',
+  secondary: '#FFC107',
+  inactive: '#8E8E93',
   background: '#F5F5F5',
 };
 
-// Komponen kustom untuk Tab Bar Icon dan Label
-const TabBarIcon = ({ name, color, focused, label }: { name: keyof typeof Ionicons.glyphMap, color: string, focused: boolean, label: string }) => {
+const TabBarIcon = ({
+  name,
+  color,
+  focused,
+  label,
+}: {
+  name: keyof typeof Ionicons.glyphMap;
+  color: string;
+  focused: boolean;
+  label: string;
+}) => {
   return (
     <View style={{ alignItems: 'center', justifyContent: 'center', top: 5 }}>
       <Ionicons name={name} size={26} color={color} />
-      <Text style={{ color: color, fontSize: 10, marginTop: 2, fontFamily: focused ? 'PlusJakartaSans-Bold' : 'PlusJakartaSans-Regular' }}>
+      <Text
+        style={{
+          color,
+          fontSize: 10,
+          marginTop: 2,
+          fontFamily: focused ? 'PlusJakartaSans-Bold' : 'PlusJakartaSans-Regular',
+        }}
+      >
         {label}
       </Text>
     </View>
   );
 };
 
-/**
- * Layout untuk navigasi Tab Bar di bagian bawah.
- * Mengatur ikon, label, dan gaya untuk setiap tab.
- */
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: COLORS.primary,
         tabBarInactiveTintColor: COLORS.inactive,
-        // Menyembunyikan label default karena kita sudah buat komponen kustom
-        tabBarShowLabel: false, 
+        tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: '#FFFFFF',
           borderTopWidth: 0,
           elevation: 10,
           shadowOpacity: 0.1,
-          height: 80, // Menambah tinggi untuk memberi ruang pada label di bawah
+          height: 80,
         },
-        headerStyle: {
-          backgroundColor: COLORS.primary,
-        },
+        headerStyle: { backgroundColor: COLORS.primary },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
-          fontFamily: 'Playfair-Bold', // Menggunakan font kustom di header
+          fontFamily: 'Playfair-Bold',
         },
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} focused={focused} label="Home" />
+            <TabBarIcon
+              name={focused ? 'home' : 'home-outline'}
+              color={color}
+              focused={focused}
+              label="Home"
+            />
           ),
         }}
       />
@@ -65,7 +79,12 @@ export default function TabLayout() {
         options={{
           title: 'About',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'information-circle' : 'information-circle-outline'} color={color} focused={focused} label="About" />
+            <TabBarIcon
+              name={focused ? 'information-circle' : 'information-circle-outline'}
+              color={color}
+              focused={focused}
+              label="About"
+            />
           ),
         }}
       />
@@ -74,17 +93,44 @@ export default function TabLayout() {
         options={{
           title: 'Arsip Tugas',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'archive' : 'archive-outline'} color={color} focused={focused} label="Arsip" />
+            <TabBarIcon
+              name={focused ? 'archive' : 'archive-outline'}
+              color={color}
+              focused={focused}
+              label="Arsip"
+            />
           ),
         }}
       />
+
+      {/* ⬇️ Tambahkan TAB Mahasiswa di sini (sebelum Profil) */}
+      <Tabs.Screen
+        name="Mahasiswa"
+        options={{
+          title: 'Mahasiswa',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? 'people' : 'people-outline'}
+              color={color}
+              focused={focused}
+              label="Mahasiswa"
+            />
+          ),
+        }}
+      />
+
+      {/* Profil diletakkan setelah Mahasiswa */}
       <Tabs.Screen
         name="profil"
         options={{
           title: 'Profil',
-          // Ikon profil diganti menjadi ikon 'user' standar
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} focused={focused} label="Profile" />
+            <TabBarIcon
+              name={focused ? 'person' : 'person-outline'}
+              color={color}
+              focused={focused}
+              label="Profile"
+            />
           ),
         }}
       />

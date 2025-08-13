@@ -1,11 +1,17 @@
-import { Stack } from 'expo-router';
+// app/_layout.tsx
+import { Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
-// Layout ini akan memberikan header pada setiap halaman tugas
-export default function TugasLayout() {
+export default function RootLayout() {
   return (
-    <Stack>
-      {/* Opsi ini bisa dikustomisasi lebih lanjut jika perlu */}
-      <Stack.Screen options={{ headerShown: true }} />
-    </Stack>
+    <>
+      <Stack screenOptions={{ headerShadowVisible: false }}>
+        {/* Grup tabs kamu */}
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        {/* Halaman detail di luar tabs */}
+        <Stack.Screen name="mahasiswa/[nim]" options={{ title: "Detail Mahasiswa" }} />
+      </Stack>
+      <StatusBar style="auto" />
+    </>
   );
 }
